@@ -1,0 +1,21 @@
+.internal-content {
+  align-items: center;
+  justify-content: center;
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c2b2b;
+    margin: 0 0 2rem;
+  }
+
+  &__text {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 0 0 2rem;
+  }
+
+  &__link {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,16 @@
+$color-primary: #a82e26;
+$color-secondary: #66c9cd;
+
+.dialog-confirmation {
+  &__subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 2rem;
+  }
+  &__btn {
+    &__primary {
+      background-color: $color-secondary;
+      color: #fff;
+    }
+  }
+}

@@ -1,51 +1,82 @@
-<div class="search-container">
-  <mat-form-field appearance="fill">
-    <mat-label>Pesquisar Ativo</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Digite a descrição do ativo"
-    />
-  </mat-form-field>
+<div id="assets-list" class="internal-content">
+  <h3 class="internal-content__subtitle">Listagem de ativos</h3>
+  <div class="internal-content__header-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Pesquisar Ativo</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Digite a descrição do ativo"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint *ngIf="noDataMessage"
+        ><span class="internal-content__search__hint">
+          Digite a descrição do ativo
+        </span></mat-hint
+      >
+    </mat-form-field>
+    <button mat-raised-button routerLink="/ativos/form">Adicionar Ativo</button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef>Descrição</th>
+      <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataValidade">
+      <th mat-header-cell *matHeaderCellDef>Data Validade</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.dataValidade | date }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="investimentoMinimo">
+      <th mat-header-cell *matHeaderCellDef>Investimento Mínimo (R$)</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.investimentoMinimo | currency : "BRL" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-button
+          (click)="deleteAsset(element.id)"
+          class="internal-content__mat-elevation-z8__btn-action"
+          title="Remover ativo"
+        >
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Delete icon"
+            fontIcon="delete"
+          ></mat-icon>
+        </button>
+        <button
+          mat-button
+          (click)="editAsset(element.id)"
+          class="internal-content__mat-elevation-z8__btn-action"
+          title="Editar ativo"
+        >
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Edit icon"
+            fontIcon="edit"
+          ></mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25]"
+    showFirstLastButtons
+  ></mat-paginator>
 </div>
-
-<!-- Tabela de Ativos -->
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Coluna de ID -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-  </ng-container>
-
-  <!-- Coluna de Descrição -->
-  <ng-container matColumnDef="descricao">
-    <th mat-header-cell *matHeaderCellDef>Descrição</th>
-    <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
-  </ng-container>
-
-  <!-- Coluna de Data de Validade -->
-  <ng-container matColumnDef="dataValidade">
-    <th mat-header-cell *matHeaderCellDef>Data Validade</th>
-    <td mat-cell *matCellDef="let element">
-      {{ element.dataValidade | date }}
-    </td>
-  </ng-container>
-
-  <!-- Coluna de Investimento Mínimo -->
-  <ng-container matColumnDef="investimentoMinimo">
-    <th mat-header-cell *matHeaderCellDef>Investimento Mínimo (R$)</th>
-    <td mat-cell *matCellDef="let element">
-      {{ element.investimentoMinimo | currency : "BRL" }}
-    </td>
-  </ng-container>
-
-  <!-- Cabeçalho e Linhas -->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-
-<!-- Paginação -->
-<mat-paginator
-  [pageSizeOptions]="[5, 10, 25]"
-  showFirstLastButtons
-></mat-paginator>

@@ -1,39 +1,101 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+@use "@angular/material" as mat;
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
+// COLORS
+$color-primary: #a82e26;
+$color-secondary: #66c9cd;
+$color-tertiary: #74234a;
+$color-quaternary: #dea47e;
+
 $renda-fixa-app-primary: mat.define-palette(mat.$indigo-palette);
 $renda-fixa-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
 $renda-fixa-app-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$renda-fixa-app-theme: mat.define-light-theme((
-  color: (
-    primary: $renda-fixa-app-primary,
-    accent: $renda-fixa-app-accent,
-    warn: $renda-fixa-app-warn,
+$renda-fixa-app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $renda-fixa-app-primary,
+      accent: $renda-fixa-app-accent,
+      warn: $renda-fixa-app-warn,
+    ),
   )
-));
+);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($renda-fixa-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.subtitle {
+  color: #333;
+}
+
+p {
+  margin: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+a,
+a:visited,
+a:hover {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #871c15;
+}
+
+.internal-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 auto;
+  padding: 2rem 0 0;
+  height: 100%;
+  width: 60rem;
+}
+
+.mat-mdc-snack-bar-container {
+  &.rfa-snackbar {
+    --mdc-snackbar-container-color: #b25517;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}

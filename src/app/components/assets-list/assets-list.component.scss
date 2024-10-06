@@ -1,0 +1,49 @@
+$color-primary: #a82e26;
+$color-secondary: #66c9cd;
+
+.internal-content {
+  &__subtitle {
+    margin: 2rem 0;
+  }
+
+  &__header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 2rem;
+  }
+
+  .mdc-button {
+    background-color: $color-secondary;
+    color: #fff;
+  }
+
+  &__search {
+    &__hint {
+      color: #a82e26;
+      font-weight: 500;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .mat-elevation-z8 {
+    box-shadow: none;
+  }
+
+  .mat-mdc-paginator {
+    padding: 1rem 0 5rem;
+  }
+
+  &__mat-elevation-z8 {
+    &__btn-action {
+      background-color: transparent !important;
+      color: $color-secondary !important;
+      min-width: auto;
+      width: 40px;
+      &:hover {
+        color: #49a9ac !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+$color-primary: #a82e26;
+$color-secondary: #66c9cd;
+
+.internal-content {
+  &__subtitle {
+    margin: 2rem 0;
+  }
+
+  &__assets-wrapper {
+    border-radius: 8px;
+    border: 0.1rem solid #878787;
+    padding: 2rem;
+    margin: 0 auto 2rem;
+    width: 40rem;
+
+    &__item {
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0 0 1rem;
+    }
+  }
+
+  .mat-mdc-form-field {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 3rem;
+  }
+
+  .mdc-button {
+    &--raised {
+      background-color: $color-secondary;
+      color: #fff;
+    }
+  }
+}
