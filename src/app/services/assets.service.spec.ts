@@ -45,7 +45,7 @@ describe('AssetsService', () => {
       'https://api.andbank.com.br/candidate/renda-fixa'
     );
     expect(req.request.method).toBe('GET');
-    req.flush(mockAssets); // Responde com dados simulados
+    req.flush(mockAssets);
   });
 
   it('deve recuperar um ativo pelo id (GET)', () => {
@@ -71,7 +71,7 @@ describe('AssetsService', () => {
 
   it('deve criar um ativo (POST)', () => {
     const newAsset: Asset = {
-      id: 0, // Defina um valor padrão para id, pois ele não é fornecido na criação
+      id: 0,
       descricao: 'Novo CDB',
       dataValidade: '2026-12-31',
       investimentoMinimo: 2000.0,
@@ -108,7 +108,7 @@ describe('AssetsService', () => {
       'https://api.andbank.com.br/candidate/renda-fixa'
     );
     expect(req.request.method).toBe('PUT');
-    req.flush(null); // Resposta vazia
+    req.flush(null);
   });
 
   it('deve deletar um ativo (DELETE)', () => {

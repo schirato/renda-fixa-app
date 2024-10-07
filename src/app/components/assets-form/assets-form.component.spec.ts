@@ -169,7 +169,6 @@ describe('AssetsFormComponent', () => {
   it('deve mostrar mensagem de erro ao criar um ativo', () => {
     const errorResponse = { error: { message: 'Erro ao criar' } };
 
-    // Mock do retorno com erro
     assetsService.createAsset.and.returnValue(throwError(errorResponse));
 
     component.assetForm.setValue({
